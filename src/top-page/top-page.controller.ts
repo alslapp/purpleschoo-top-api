@@ -1,22 +1,51 @@
-import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, Patch, Post } from '@nestjs/common';
-import { TopPageModel } from './top-page.model';
-import { FindTopPageDto } from './dto';
+import {
+	Body,
+	Controller,
+	Delete,
+	Get,
+	HttpCode,
+	HttpStatus,
+	Param,
+	Patch,
+	Post,
+} from '@nestjs/common';
+import {
+	TopPageCreateDto,
+	TopPageDto,
+} from './dto';
+import { TopPageService } from './top-page.service';
 
 @Controller('top-page')
 export class TopPageController {
-	@Post('create')
-	async create(@Body() dto: Omit<TopPageModel, '_id'>) {}
+	constructor(
+		private topPageService: TopPageService,
+	) {}
+
+	@Post()
+	async create(@Body() dto: TopPageCreateDto) {
+		return await this.topPageService.create(dto);
+	}
+
+	@Get()
+	async getAll() {
+		return await this.topPageService.getAll();
+	}
 
 	@Get(':id')
 	async get(@Param('id') id: string) {}
 
 	@Delete(':id')
-	async delete(@Param('id') id: string) {}
+	delete(@Param('id') id: string) {
+		return this.topPageService.deleteById(id);
+	}
 
 	@Patch(':id')
-	async patch(@Param('id') id: string, @Body() dto: TopPageModel) {}
+	async patch(
+		@Param('id') id: string,
+		@Body() dto: TopPageDto,
+	) {}
 
 	@HttpCode(HttpStatus.OK)
 	@Post()
-	async find(@Body() dto: FindTopPageDto) {}
+	async find(@Body() dto: TopPageDto) {}
 }

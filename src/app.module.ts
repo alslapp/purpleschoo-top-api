@@ -3,10 +3,24 @@ import { AuthModule } from './auth/auth.module';
 import { TopPageModule } from './top-page/top-page.module';
 import { ProductModule } from './product/product.module';
 import { ReviewModule } from './review/review.module';
+import { ConfigModule } from '@nestjs/config';
+import { MongooseModule } from '@nestjs/mongoose';
+import { UserModule } from './users/user.module';
 
 @Module({
-	imports: [AuthModule, TopPageModule, ProductModule, ReviewModule],
-	// controllers: [],
-	// providers: [],
+	imports: [
+		ConfigModule.forRoot({ isGlobal: true }),
+		MongooseModule.forRoot(
+			'mongodb://localhost/test',
+		),
+		//'mongodb://admin:root@localhost:27017/test?authSource=admin&retryWrites=true&w=majority'
+		AuthModule,
+		TopPageModule,
+		ProductModule,
+		ReviewModule,
+		UserModule,
+	],
+	controllers: [],
+	providers: [],
 })
 export class AppModule {}
