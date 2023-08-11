@@ -1,9 +1,4 @@
-import {
-	IsArray,
-	IsNotEmpty,
-	IsString,
-	IsInt,
-} from 'class-validator';
+import { IsArray, IsNotEmpty, IsString, IsInt } from 'class-validator';
 import { Type } from 'class-transformer';
 
 export class ProductDto {

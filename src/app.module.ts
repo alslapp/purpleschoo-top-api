@@ -10,9 +10,7 @@ import { UserModule } from './users/user.module';
 @Module({
 	imports: [
 		ConfigModule.forRoot({ isGlobal: true }),
-		MongooseModule.forRoot(
-			'mongodb://localhost/test',
-		),
+		MongooseModule.forRoot('mongodb://localhost/test'),
 		//'mongodb://admin:root@localhost:27017/test?authSource=admin&retryWrites=true&w=majority'
 		AuthModule,
 		TopPageModule,

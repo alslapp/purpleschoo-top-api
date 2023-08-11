@@ -1,8 +1,4 @@
-import {
-	IsNotEmpty,
-	IsString,
-	IsInt,
-} from 'class-validator';
+import { IsNotEmpty, IsString, IsInt } from 'class-validator';
 import { Type } from 'class-transformer';
 
 export class ReviewDto {
@@ -25,10 +21,4 @@ export class ReviewDto {
 	@IsString()
 	@IsNotEmpty()
 	productId: string;
-
-	@IsString()
-	createdAt: Date;
-
-	@IsString()
-	updatedAt: Date;
 }

@@ -1,25 +1,11 @@
-import {
-	Prop,
-	Schema,
-	SchemaFactory,
-} from '@nestjs/mongoose';
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument } from 'mongoose';
-import {
-	TopLevelCategory,
-	TopPageDto,
-} from '../dto';
-import {
-	TopPageAdvantage,
-	TopPageAdvantageSchema,
-} from './advantage.model';
+import { TopLevelCategory, TopPageDto } from '../dto';
+import { TopPageAdvantage, TopPageAdvantageSchema } from './advantage.model';
 
-import {
-	HHAdvantage,
-	HHAdvantageSchema,
-} from './hh.model';
+import { HHAdvantage, HHAdvantageSchema } from './hh.model';
 
-export type TopPageDocument =
-	HydratedDocument<TopPage>;
+export type TopPageDocument = HydratedDocument<TopPage>;
 
 @Schema({ timestamps: true })
 export class TopPage {
@@ -54,5 +40,4 @@ export class TopPage {
 	tags: string[];
 }
 
-export const TopPageSchema =
-	SchemaFactory.createForClass(TopPage);
+export const TopPageSchema = SchemaFactory.createForClass(TopPage);

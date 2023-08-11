@@ -1,9 +1,4 @@
-import {
-	Body,
-	Controller,
-	Get,
-	Post,
-} from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { UserService } from './user.service';
 import { UserCreateDto, UserDto } from './dto';
 
@@ -12,16 +7,22 @@ export class UserController {
 	constructor(private userService: UserService) {}
 
 	@Post()
-	async create(@Body() dto: UserCreateDto) {
-		return await this.userService.createUser(dto);
+	create(@Body() dto: UserCreateDto) {
+		return this.userService.createUser(dto);
+	}
+
+	@Get()
+	getAll() {
+		return this.userService.getAll();
 	}
 
 	@Get('getByEmail')
-	async getByEmail(
-		@Body('email') email: UserDto['email'],
-	) {
-		return await this.userService.getByEmail(
-			email,
-		);
+	getByEmail(@Body('email') email: UserDto['email']) {
+		return this.userService.getByEmail(email);
+	}
+
+	@Delete(':id')
+	deleteById(@Param('id') id: string) {
+		return this.userService.deleteById(id);
 	}
 }

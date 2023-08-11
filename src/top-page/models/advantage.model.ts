@@ -1,8 +1,4 @@
-import {
-	Prop,
-	Schema,
-	SchemaFactory,
-} from '@nestjs/mongoose';
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 
 @Schema()
 export class TopPageAdvantage {
@@ -13,5 +9,4 @@ export class TopPageAdvantage {
 	description: string;
 }
 
-export const TopPageAdvantageSchema =
-	SchemaFactory.createForClass(TopPageAdvantage);
+export const TopPageAdvantageSchema = SchemaFactory.createForClass(TopPageAdvantage);

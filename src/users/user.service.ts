@@ -25,4 +25,12 @@ export class UserService {
 		});
 		return await newUser.save();
 	}
+
+	getAll() {
+		return this.userModel.find();
+	}
+
+	deleteById(_id: string) {
+		return this.userModel.deleteOne({ _id });
+	}
 }

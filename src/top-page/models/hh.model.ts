@@ -1,8 +1,4 @@
-import {
-	Prop,
-	Schema,
-	SchemaFactory,
-} from '@nestjs/mongoose';
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 
 @Schema()
 export class HHAdvantage {
@@ -19,5 +15,4 @@ export class HHAdvantage {
 	seniorSalary: number;
 }
 
-export const HHAdvantageSchema =
-	SchemaFactory.createForClass(HHAdvantage);
+export const HHAdvantageSchema = SchemaFactory.createForClass(HHAdvantage);

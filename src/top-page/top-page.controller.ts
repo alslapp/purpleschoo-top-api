@@ -9,17 +9,12 @@ import {
 	Patch,
 	Post,
 } from '@nestjs/common';
-import {
-	TopPageCreateDto,
-	TopPageDto,
-} from './dto';
+import { TopPageCreateDto, TopPageDto } from './dto';
 import { TopPageService } from './top-page.service';
 
 @Controller('top-page')
 export class TopPageController {
-	constructor(
-		private topPageService: TopPageService,
-	) {}
+	constructor(private topPageService: TopPageService) {}
 
 	@Post()
 	async create(@Body() dto: TopPageCreateDto) {
@@ -40,10 +35,7 @@ export class TopPageController {
 	}
 
 	@Patch(':id')
-	async patch(
-		@Param('id') id: string,
-		@Body() dto: TopPageDto,
-	) {}
+	async patch(@Param('id') id: string, @Body() dto: TopPageDto) {}
 
 	@HttpCode(HttpStatus.OK)
 	@Post()

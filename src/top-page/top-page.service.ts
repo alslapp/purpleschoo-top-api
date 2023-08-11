@@ -1,10 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import {
-	TopPage,
-	TopPageDocument,
-} from './models';
+import { TopPage, TopPageDocument } from './models';
 import { TopPageCreateDto } from './dto';
 
 @Injectable()

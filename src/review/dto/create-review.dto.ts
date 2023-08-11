@@ -1,6 +1,3 @@
+import { PartialType } from '@nestjs/mapped-types';
 import { ReviewDto } from './review.dto';
-
-export type ReviewCreateDto = Pick<
-	ReviewDto,
-	'name' | 'title' | 'description' | 'productId'
->;
+export class CreateReviewDto extends PartialType(ReviewDto) {}

@@ -14,9 +14,7 @@ import { ProductCreateDto } from './dto';
 
 @Controller('product')
 export class ProductController {
-	constructor(
-		private productService: ProductService,
-	) {}
+	constructor(private productService: ProductService) {}
 
 	@Post()
 	async create(@Body() dto: ProductCreateDto) {

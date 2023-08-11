@@ -1,8 +1,9 @@
-import { Injectable } from '@nestjs/common';
-import { ReviewCreateDto } from './dto';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { CreateReviewDto } from './dto';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Review, ReviewDocument } from './models';
+import { REVIEW_NOT_FOUND } from './review.constants';
 
 @Injectable()
 export class ReviewService {
@@ -11,7 +12,7 @@ export class ReviewService {
 		private reviewModel: Model<ReviewDocument>,
 	) {}
 
-	create(dto: ReviewCreateDto) {
+	create(dto: CreateReviewDto) {
 		const newReview = new this.reviewModel(dto);
 		return newReview.save();
 	}
@@ -29,10 +30,14 @@ export class ReviewService {
 	}
 
 	getByProductId(productId: string) {
-		return this.reviewModel.find({ productId });
+		return this.reviewModel.find({ productId }).exec();
 	}
 
-	getById(_id: string) {
-		return this.reviewModel.find({ _id });
+	async getById(id: string) {
+		const res = await this.reviewModel.findById(id);
+		if (!res) {
+			throw new HttpException(REVIEW_NOT_FOUND, HttpStatus.NOT_FOUND);
+		}
+		return res;
 	}
 }
