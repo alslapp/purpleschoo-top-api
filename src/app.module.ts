@@ -5,7 +5,7 @@ import { ProductModule } from './product/product.module';
 import { ReviewModule } from './review/review.module';
 import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
-import { UserModule } from './users/user.module';
+import { UserModule } from './user/user.module';
 
 @Module({
 	imports: [

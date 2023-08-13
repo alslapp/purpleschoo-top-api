@@ -1,6 +1,4 @@
 import { TopPageDto } from './top-page.dto';
+import { PartialType } from '@nestjs/mapped-types';
 
-export type TopPageCreateDto = Pick<
-	TopPageDto,
-	'firstCategory' | 'secondCategory' | 'title' | 'seoText' | 'tagsTitle' | 'tags'
->;
+export class TopPageCreateDto extends PartialType(TopPageDto) {}
