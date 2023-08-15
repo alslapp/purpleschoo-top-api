@@ -2,6 +2,9 @@ version: '3.1'
 
 services:
   top-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
     image: top-api:latest
     container_name: top-api
     restart: always
@@ -9,9 +12,15 @@ services:
       - 3330:3330
     volumes:
       - ./.env:/opt/app/.env
-    networks:
-      - bridge-topapi
+    depends_on:
+      - mongo
 
-networks:
-  bridge-topapi:
-    driver: bridge
+  mongo:
+    image: mongo
+    container_name: mongo
+    restart:
+      always
+    ports:
+      - 27017:27017
+    volumes:
+      - ./mongo:/data/db

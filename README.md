@@ -47,32 +47,9 @@ $ npm i bcryptjs
 $ npm i -D @types/bcryptjs 
 ```
 
-### Собрать образ docker для mongo db
+### Собрать приложение в docker
 ```bash
-$ cd ./mongo/
 $ docker compose up -d
-```
-### Собрать образ приложения в docker (файл Dockerfile в корне проекта)
-```bash
-$ docker build -t top-api .
-$ docker compose up -d
-```
-
-### Собрать сеть docker
-```bash
-$ docker network create bridge-topapi
-```
-
-### Подключить 2 контейнера к network bridge-topapi
-```bash
-docker network connect bridge-topapi <CONTAINER_ID app>
-docker network connect bridge-topapi <CONTAINER_ID db>
-```
-
-### Перезапустить конейнеры
-```bash
-docker restart <CONTAINER_ID app>
-docker restart <CONTAINER_ID db>
 ```
 
 ### Войти в консоль контейнера
