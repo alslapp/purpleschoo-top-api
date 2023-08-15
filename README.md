@@ -51,7 +51,8 @@ $ npm i -D @types/bcryptjs
 $ cd ./mongo/
 $ docker compose up -d
 ```
-### Собрать образ приложения в docker (файл Dockerfile)
+### Собрать образ приложения в docker (файл Dockerfile в корне проекта)
 ```bash
 $ docker build -t top-api .
+$ docker compose up -d
 ```
