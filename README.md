@@ -46,6 +46,12 @@ https://www.npmjs.com/package/bcryptjs
 $ npm i bcryptjs
 $ npm i -D @types/bcryptjs 
 ```
+
+### Собрать сеть docker
+```bash
+$ docker network create topapi
+```
+
 ### Собрать образ docker для mongo db
 ```bash
 $ cd ./mongo/
