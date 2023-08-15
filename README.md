@@ -68,3 +68,12 @@ $ docker network create bridge-topapi
 docker network connect bridge-topapi <CONTAINER_ID app>
 docker network connect bridge-topapi <CONTAINER_ID db>
 ```
+
+### Очистить docker
+```bash
+# удалить все, кроме volume: 
+$ docker stop $(docker ps -a -q) && docker system prune -a
+
+# удалить все volumes: 
+$ docker volume rm $(docker volume ls -q)
+```
