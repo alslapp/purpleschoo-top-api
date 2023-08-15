@@ -1,10 +1,17 @@
 version: '3.9'
+
 services:
-    top-api:
-      image: top-api:latest
-      container_name: top-api
-      restart: always
-      ports:
-        - 3330:3330
-      volumes:
-        - ./.env:/opt/app/.env
+  top-api:
+    image: top-api:latest
+    container_name: top-api
+    restart: always
+    ports:
+      - 3330:3330
+    volumes:
+      - ./.env:/opt/app/.env
+    networks:
+      - bridge-topapi
+
+networks:
+  bridge-topapi:
+    driver: bridge

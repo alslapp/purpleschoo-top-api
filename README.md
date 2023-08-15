@@ -49,7 +49,7 @@ $ npm i -D @types/bcryptjs
 
 ### Собрать сеть docker
 ```bash
-$ docker network create topapi
+$ docker network create bridge-topapi
 ```
 
 ### Собрать образ docker для mongo db
@@ -61,4 +61,10 @@ $ docker compose up -d
 ```bash
 $ docker build -t top-api .
 $ docker compose up -d
+```
+
+### Собрать образ приложения в docker (файл Dockerfile в корне проекта)
+```bashподключить 2 контейнера к bridge-topapi
+$ docker network connect bridge-topapi 6d9ca115c3d6
+$ docker network connect bridge-topapi 7ff332ffee67
 ```
