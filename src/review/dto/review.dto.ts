@@ -1,6 +1,9 @@
 import { IsNotEmpty, IsString, IsInt, Max, Min } from 'class-validator';
 import { Type } from 'class-transformer';
-import {REVIEWS_VALIDATION_ERROR_RATING_TOO_GREAT, REVIEWS_VALIDATION_ERROR_RATING_TOO_LESS} from "../review.constants";
+import {
+	REVIEWS_VALIDATION_ERROR_RATING_TOO_GREAT,
+	REVIEWS_VALIDATION_ERROR_RATING_TOO_LESS,
+} from '../review.constants';
 
 export class ReviewDto {
 	@IsString()

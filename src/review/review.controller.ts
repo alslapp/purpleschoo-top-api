@@ -16,6 +16,7 @@ import { ReviewService } from './review.service';
 import { REVIEW_NOT_FOUND, REVIEWS_BY_PRODUCT_ID_NOT_FOUND } from './review.constants';
 import { JwtAuthGuard } from '../auth/gards';
 import { userEmail } from '../decorators';
+import {IdValidationPipe} from "../pipes/id-validation.pipe";
 
 @Controller('review')
 export class ReviewController {
@@ -38,13 +39,13 @@ export class ReviewController {
 	}
 
 	@Get(':id')
-	getById(@Param('id') id: string) {
+	getById(@Param('id', IdValidationPipe) id: string) {
 		return this.reviewService.getById(id);
 	}
 
 	@UseGuards(JwtAuthGuard)
 	@Delete(':id')
-	async delete(@Param('id') id: string) {
+	async delete(@Param('id', IdValidationPipe) id: string) {
 		const res = await this.reviewService.deleteById(id);
 		if (!res?.deletedCount) {
 			throw new HttpException(REVIEW_NOT_FOUND, HttpStatus.NOT_FOUND);
@@ -52,12 +53,12 @@ export class ReviewController {
 	}
 
 	@Get('byProduct/:productId')
-	getByProductId(@Param('productId') productId: string, @userEmail() email: string) {
+	getByProductId(@Param('productId', IdValidationPipe) productId: string, @userEmail() email: string) {
 		return this.reviewService.getByProductId(productId);
 	}
 
 	@UseGuards(JwtAuthGuard)
-	async deleteByProductId(@Param('ProductId') ProductId: string) {
+	async deleteByProductId(@Param('ProductId', IdValidationPipe) ProductId: string) {
 		const res = await this.reviewService.deleteByProductId(ProductId);
 		if (!res?.deletedCount) {
 			throw new HttpException(REVIEWS_BY_PRODUCT_ID_NOT_FOUND, HttpStatus.NOT_FOUND);

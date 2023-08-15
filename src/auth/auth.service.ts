@@ -3,7 +3,7 @@ import { UserService } from '../user/user.service';
 import { ERROR_USER_AUTH } from '../user/user.constants';
 import { compare } from 'bcryptjs';
 import { UserDocument } from '../user/models';
-import { JwtService } from "@nestjs/jwt";
+import { JwtService } from '@nestjs/jwt';
 
 @Injectable()
 export class AuthService {

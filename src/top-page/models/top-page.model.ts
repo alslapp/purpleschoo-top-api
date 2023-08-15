@@ -1,19 +1,25 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument } from 'mongoose';
-import { TopLevelCategory, TopPageDto } from '../dto';
-import { TopPageAdvantage, TopPageAdvantageSchema } from './advantage.model';
+import { TopLevelCategoryEnum } from '../dto';
 
-import { HHAdvantage, HHAdvantageSchema } from './hh.model';
+type TopPageAdvantage = {
+	title: string;
+	description: string;
+};
+
+type Hh = {
+	count: number;
+	juniorSalary: number;
+	middleSalary: number;
+	seniorSalary: number;
+};
 
 export type TopPageDocument = HydratedDocument<TopPage>;
 
 @Schema({ timestamps: true })
 export class TopPage {
-	@Prop({
-		type: String,
-		enum: TopLevelCategory,
-	})
-	firstCategory: TopPageDto['firstCategory'];
+	@Prop()
+	firstCategory: TopLevelCategoryEnum;
 
 	@Prop()
 	secondCategory: string;
@@ -24,10 +30,10 @@ export class TopPage {
 	@Prop({ required: true, unique: true })
 	alias: string;
 
-	@Prop({ type: [HHAdvantageSchema] })
-	hh: HHAdvantage[];
+	@Prop()
+	hh: Hh[];
 
-	@Prop({ type: [TopPageAdvantageSchema] })
+	@Prop()
 	advantages: TopPageAdvantage[];
 
 	@Prop()
@@ -41,3 +47,11 @@ export class TopPage {
 }
 
 export const TopPageSchema = SchemaFactory.createForClass(TopPage);
+TopPageSchema.index({
+	// делаем индексируемым все поля документа, в том числе и массивы и объекты
+	// т.к. поставить индекс на одно поле, которое является массивом нет возможности.
+	// Только на весь документ сразу
+	'$**': 'text',
+	// если не нужно искать по массивам, то можно создать индексы только по нужным полям
+	// title: 'text', seoText: 'text'
+});
