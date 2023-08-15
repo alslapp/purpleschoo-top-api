@@ -6,10 +6,10 @@ services:
     container_name: mongo
     restart:
         always
-    volumes:
-      - ./mongo-data:/data/mongo
     ports:
       - 27017:27017
+    volumes:
+      - ./mongo-data:/data/mongo
     networks:
       - bridge-topapi
 
