@@ -1,0 +1,10 @@
+version: '3.1'
+service:
+    top-api:
+      image: top-api:latest
+      container_name: top-api
+      restart: always
+      port:
+        - 3330:3330
+      volumes:
+        - ./.env:/opt/app/.env
