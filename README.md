@@ -69,6 +69,17 @@ docker network connect bridge-topapi <CONTAINER_ID app>
 docker network connect bridge-topapi <CONTAINER_ID db>
 ```
 
+### Перезапустить конейнеры
+```bash
+docker restart <CONTAINER_ID app>
+docker restart <CONTAINER_ID db>
+```
+
+### Войти в консоль контейнера
+```bash
+$ docker logs -f top-api
+```
+
 ### Очистить docker
 ```bash
 # удалить все, кроме volume: 
