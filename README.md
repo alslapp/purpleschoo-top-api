@@ -76,3 +76,8 @@ docker stop $(docker ps -a -q) && docker system prune -a
 ```bash
 docker volume rm $(docker volume ls -q)
 ```
+
+#### на VirtualBox не работает mongo v5+, можно поставить образ v4
+```bash
+image: mongo:4.4.6
+```

@@ -3,7 +3,7 @@ version: '3.9'
 services:
 
   mongo-topapi:
-    image: mongo
+    image: mongo:4.4.6
     container_name: mongo-topapi
     restart:
       always
