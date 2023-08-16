@@ -47,6 +47,20 @@ $ npm i bcryptjs
 $ npm i -D @types/bcryptjs 
 ```
 
+### Собрать на проде только приложение
+
+удалить контейнер
+
+```bash
+docker remove -f top-api
+```
+
+собрать новый
+
+```bash
+docker compose -f docker-compose-app.yml up -d
+```
+
 ### Собрать приложение в docker
 ```bash
 docker compose -f docker-compose-app.yml -f docker-compose-app-2.yml -f docker-compose-db.yml up -d
@@ -55,11 +69,6 @@ docker compose -f docker-compose-app.yml -f docker-compose-app-2.yml -f docker-c
 ### Собрать только базу данных в docker
 ```bash
 docker compose -f docker-compose-db.yml up -d
-```
-
-### Собрать только сервер в docker
-```bash
-docker compose -f docker-compose-app.yml up -d
 ```
 
 ### Войти в консоль контейнера
@@ -85,4 +94,10 @@ image: mongo:4.4.6
 #### на VirtualBox не работает mongo v5+, можно поставить образ v4
 ```bash
 image: mongo:4.4.6
+```
+### GHCR
+```bash
+# файл - https://docs.github.com/en/actions/publishing-packages/publishing-docker-images
+# сначала локально на компе в консоли выполнить команду: (проверить в настройках гитхаба, чтобы токен не истек)
+# echo "GITHUB_TOKEN" | docker login ghcr.io -u USERNAME_GITHUB --password-stdin
 ```
