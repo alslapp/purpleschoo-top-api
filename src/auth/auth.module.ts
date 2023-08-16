@@ -10,7 +10,7 @@ import { JwtStrategy } from './strategies';
 
 @Module({
 	controllers: [AuthController],
-	providers: [AuthService, AuthService, JwtStrategy],
+	providers: [AuthService, JwtStrategy],
 	imports: [
 		ConfigModule,
 		UserModule,

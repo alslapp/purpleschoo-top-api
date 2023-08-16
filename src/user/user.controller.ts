@@ -12,6 +12,7 @@ import { UserService } from './user.service';
 
 import { ERROR_USER_NOT_EXISTS } from './user.constants';
 import { JwtAuthGuard } from '../auth/gards';
+import {IdValidationPipe} from "../pipes/id-validation.pipe";
 
 @Controller('user')
 export class UserController {
@@ -33,7 +34,7 @@ export class UserController {
 
 	@UseGuards(JwtAuthGuard)
 	@Delete(':id')
-	async deleteById(@Param('id') id: string) {
+	async deleteById(@Param('id', IdValidationPipe) id: string) {
 		const user = await this.userService.findUserById(id);
 		if (!user) {
 			throw new HttpException(ERROR_USER_NOT_EXISTS, HttpStatus.NOT_FOUND);

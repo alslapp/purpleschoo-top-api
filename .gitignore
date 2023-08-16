@@ -1,6 +1,7 @@
 # compiled output
 /dist
 /node_modules
+/.mongo
 
 # Logs
 logs
@@ -35,7 +36,5 @@ lerna-debug.log*
 !.vscode/extensions.json
 
 # ENV files
-.env
-.env.*
-
-/mongo/mongo-data/
+# .env
+# env.*

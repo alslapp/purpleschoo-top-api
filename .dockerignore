@@ -1,0 +1,14 @@
+.mongo/
+node_modules/
+.idea
+.git
+.dockerignore
+Dockerfile
+README.md
+docker-compose-*
+test
+.eslintrc.js
+.prettierrc
+.gitignore
+.env
+.env.*

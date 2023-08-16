@@ -18,14 +18,11 @@ $ npm run start:prod
 ### Test
 
 ```bash
-# unit tests
-$ npm run test
-
 # e2e tests
 $ npm run test:e2e
 
-# test coverage
-$ npm run test:cov
+# unit tests
+$ npm run test
 ```
 
 ## Дабавленные пакеты
@@ -48,4 +45,39 @@ https://www.npmjs.com/package/bcryptjs
 ```bash
 $ npm i bcryptjs
 $ npm i -D @types/bcryptjs 
+```
+
+### Собрать приложение в docker
+```bash
+docker compose -f docker-compose-app.yml -f docker-compose-app-2.yml -f docker-compose-db.yml up -d
+```
+
+### Собрать только базу данных в docker
+```bash
+docker compose -f docker-compose-db.yml up -d
+```
+
+### Собрать только сервер в docker
+```bash
+docker compose -f docker-compose-app.yml up -d
+```
+
+### Войти в консоль контейнера
+```bash
+docker logs -f top-api
+```
+
+### Очистить docker
+#### удалить все, кроме volume:
+```bash
+docker stop $(docker ps -a -q) && docker system prune -a
+```
+#### удалить все volumes: 
+```bash
+docker volume rm $(docker volume ls -q)
+```
+
+#### на VirtualBox не работает mongo v5+, можно поставить образ v4
+```bash
+image: mongo:4.4.6
 ```
