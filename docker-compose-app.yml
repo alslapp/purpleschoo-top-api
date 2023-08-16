@@ -6,7 +6,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: top-api:latest
+    #image: top-api:latest
+    image: ghcr.io/alslapp/purpleschoo-top-api:main
     container_name: top-api
     restart: always
     ports:

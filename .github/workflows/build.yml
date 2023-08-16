@@ -1,3 +1,8 @@
+# сначала локально на компе в консоли выполнить команду: (проверить в настройках гитхаба, чтобы токен не истек)
+# echo "secrets.ghcr_TOKEN" | docker login ghcr.io -u USERNAME --password-stdin
+
+# https://docs.github.com/en/actions/publishing-packages/publishing-docker-images
+
 name: Create and publish a Docker image
 
 on:
