@@ -16,5 +16,5 @@ jobs:
           registry: docker.pkg.github.com
           name: docker.pkg.github.com/alslapp/purpleschoo-top-api/purpleschoo-top-api
           username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
           tags: "latest"
