@@ -13,8 +13,8 @@ jobs:
       - name: Publish to registy
         uses: elgohr/Publish-Docker-Github-Action@v5
         with:
-          registry: ghcr.io
-          name: ghcr.io/alslapp/purpleschoo-top-api/purpleschoo-top-api
+          registry: docker.pkg.github.com
+          name: docker.pkg.github.com/alslapp/purpleschoo-top-api/purpleschoo-top-api
           username: ${{ secrets.ghcr_USERNAME }}
           password: ${{ secrets.ghcr_TOKEN }}
           tags: "latest"
