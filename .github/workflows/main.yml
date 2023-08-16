@@ -14,7 +14,7 @@ jobs:
         uses: elgohr/Publish-Docker-Github-Action@v5
         with:
           registry: docker.pkg.github.com
-          name: docker.pkg.github.com/alslapp/purpleschoo-top-api
+          name: docker.pkg.github.com/alslapp/purpleschoo-top-api/purpleschoo-top-api
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
           tags: "latest"
