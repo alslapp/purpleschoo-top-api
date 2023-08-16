@@ -1,0 +1,20 @@
+version: '3.9'
+
+services:
+
+  top-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: top-api:latest
+    container_name: top-api
+    restart: always
+    ports:
+      - 3330:3330
+    env_file:
+      - ./.env.prod
+    networks:
+      - topapi
+
+networks:
+  topapi:
