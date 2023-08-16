@@ -53,7 +53,7 @@ export class ReviewController {
 	}
 
 	@Get('byProduct/:productId')
-	getByProductId(@Param('productId', IdValidationPipe) productId: string, @userEmail() email: string) {
+	getByProductId(@Param('productId', IdValidationPipe) productId: string) {
 		return this.reviewService.getByProductId(productId);
 	}
 
