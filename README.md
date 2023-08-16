@@ -81,3 +81,8 @@ docker volume rm $(docker volume ls -q)
 ```bash
 image: mongo:4.4.6
 ```
+
+#### на VirtualBox не работает mongo v5+, можно поставить образ v4
+```bash
+image: mongo:4.4.6
+```
